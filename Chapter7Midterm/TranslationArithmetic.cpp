@@ -47,11 +47,6 @@ bool TranslationArithmetic::checkParenethesis(string& expression){
 			failed = true;
 		}
 	}
-	////this if statement is checking for the last index in the expression(string) if there is no ')', if no then its true (error)
-	//if (expression[length - 1] != RIGHT_PARENTHESIS){
-	//	//flag to true so it can be an error
-	//	failed = true;
-	//}
 	//if there is an '(' in the stack and is not empty then error because there is a parenthesis that does not match
 	if (!validExpression.empty())
 	{
@@ -66,7 +61,7 @@ bool TranslationArithmetic::checkParenethesis(string& expression){
 void TranslationArithmetic::menuInformation(){
 	system("cls");
 	char option;
-	string expression = ")(5 + b*(c^d-e)^(f+g*h)-34))";
+	string expression = "(5 + b*(c^d-e)^(f+g*h-34)";
 	setExpression(expression);
 	expression = getExpression();
 	cout << "\n\t2> Translation of Arithmetic Expression";
