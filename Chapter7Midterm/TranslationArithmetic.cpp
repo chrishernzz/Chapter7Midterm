@@ -34,7 +34,7 @@ bool TranslationArithmetic::checkParenethesis(string& expression){
 			//will push everytime there is a left parenthesis
 			validExpression.push(expression[i]);
 		}
-		//else if there is right parenthesis and the stakc is not empty, pop it
+		//else if the expression[index] is right parenthesis and the stack is not empty, pop it
 		else if (expression[i] == RIGHT_PARENTHESIS && !validExpression.empty()) {
 			//will pop the left parenthesis off the stack since there is a right parenthesis
 			validExpression.pop();
