@@ -44,7 +44,7 @@ bool TranslationArithmetic::checkParenethesis(string& expression){
 			failed = true;
 		}
 	}
-	//if there is an '(' in the stack and is not empty then error because there is a parenthesis that does not match
+	//if there is an '(' in the stack then the stack is not empty because there is a left parenthesis that does not match
 	if (!validExpression.empty()){
 		failed = true;
 	}
@@ -57,7 +57,7 @@ bool TranslationArithmetic::checkParenethesis(string& expression){
 void TranslationArithmetic::menuInformation(){
 	system("cls");
 	char option;
-	string expression = "(5 + 9 + b*c(^d-e)^(f+g*h)-i";
+	string expression = "(a + b*(c^d-e)^(f+g*h)-i)";
 	setExpression(expression);
 	expression = getExpression();
 	cout << "\n\t2> Translation of Arithmetic Expression";
