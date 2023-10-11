@@ -21,7 +21,6 @@ bool TranslationArithmetic::checkParenethesis(string& expression){
 	const char RIGHT_PARENTHESIS = ')';
 	//getting size of the expression;
 	int length = expression.size();
-	char next;
 	bool failed = false;
 	
 	//checking if there is left parenthesis beginning of the expression, flag it to true right away
@@ -30,26 +29,23 @@ bool TranslationArithmetic::checkParenethesis(string& expression){
 		failed = true;
 	}
 	for (int i = 0; !failed && (i < length); i++) {
-		//turn this (the string expression) into char, so now expression[index] will be in char form
-		next = expression[i];
-
-		//if the char (next) is equal to left parenthesis, push it to the stack
-		if (next == LEFT_PARENTHESIS) {
+		//if the expression[index] is equal to the left parenthesis, push it to the stack EX: expression[3] has '(' then its eqaul to left parenthesis
+		if (expression[i] == LEFT_PARENTHESIS) {
 			//will push everytime there is a left parenthesis
-			validExpression.push(next);
+			validExpression.push(expression[i]);
 		}
 		//else if there is right parenthesis and the stakc is not empty, pop it
-		else if (next == RIGHT_PARENTHESIS && !validExpression.empty()) {
+		else if (expression[i] == RIGHT_PARENTHESIS && !validExpression.empty()) {
 			//will pop the left parenthesis off the stack since there is a right parenthesis
 			validExpression.pop();
 		}
-		else if (next == RIGHT_PARENTHESIS && validExpression.empty()) {
+		//else if there is no '(' in the stack (stack is empty) but there is a ')' then error
+		else if (expression[i] == RIGHT_PARENTHESIS && validExpression.empty()) {
 			failed = true;
 		}
 	}
 	//if there is an '(' in the stack and is not empty then error because there is a parenthesis that does not match
-	if (!validExpression.empty())
-	{
+	if (!validExpression.empty()){
 		failed = true;
 	}
 
@@ -61,7 +57,7 @@ bool TranslationArithmetic::checkParenethesis(string& expression){
 void TranslationArithmetic::menuInformation(){
 	system("cls");
 	char option;
-	string expression = "(5 + b*(c^d-e)^(f+g*h-34)";
+	string expression = "(5 + 9 + b*c(^d-e)^(f+g*h)-i";
 	setExpression(expression);
 	expression = getExpression();
 	cout << "\n\t2> Translation of Arithmetic Expression";
