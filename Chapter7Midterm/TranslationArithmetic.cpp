@@ -57,7 +57,7 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 //postcondition: going to create a menu that accepts 
 void TranslationArithmetic::menuInformation(){
 	system("cls");
-	expression = "a + b*c^d-e^(f+g*h)-i";
+	expression = "a + (b*c^d-e)^(f+g*h)-i)";
 	//set the expression
 	setExpression(expression);
 	//get the expression now
