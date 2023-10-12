@@ -54,16 +54,14 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 //postcondition: going to create a menu that accepts 
 void TranslationArithmetic::menuInformation(){
 	system("cls");
-	//declaring an object of the class (TranslationArithmetic) to show that we are using setters and getters
-	TranslationArithmetic obj;
-	string express = "a + (b*c^d-e)(10a + a^2)^(f+g*h)-i";
-	//set the expression
-	obj.setExpression(express);
+	string express = "a (+ (b*c^d-e)^(f+g*h)-i)";
+	//set the expression with the new string
+	setExpression(express);
 	cout << "\n\t2> Translation of Arithmetic Expression";
 	cout << "\n\t" << string(82, char(205)) << "\n";
 
-	//if true
-	if (checkParenethesis(obj.getExpression())) {
+	//if true (pass in the getter that has the expression, its a string)
+	if (checkParenethesis(getExpression())) {
 		cout << "\n\t\tInfix expression: " << express;
 		cout << "\n\t\tPostfix expression: ERROR: inbalanced parentheses.";
 	}
@@ -72,5 +70,5 @@ void TranslationArithmetic::menuInformation(){
 		cout << "\n\t\tPostfix expression: VALID: balanced parenthesis!";
 	}
 
-	cout << "\n";
+	cout << "\n\n";
 }
