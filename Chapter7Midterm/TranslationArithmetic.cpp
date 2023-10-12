@@ -35,16 +35,13 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 				//will pop the left parenthesis off the stack since there is a right parenthesis
 				validExpression.pop();
 			}
-			else {
-				failed = true;
-			}
 		}
 		//else if there is no '(' in the stack (stack is empty) but there is a ')' then error
 		else if (expression[i] == ')' && validExpression.empty()) {
 			failed = true;
 		}
 	}
-	//if there is an '(' in the stack then the stack is not empty because there is a left parenthesis that does not match
+	//if there is an '(' (left parenthesis) left over in the stack (stack is not empty) because there is a left parenthesis that does not match
 	if (!validExpression.empty()){
 		//flag it to true
 		failed = true;
@@ -57,16 +54,16 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 //postcondition: going to create a menu that accepts 
 void TranslationArithmetic::menuInformation(){
 	system("cls");
-	expression = "a + (b*c^d-e)^(f+g*h)-i)";
+	//instance of object to show that we are using setters and getters
+	TranslationArithmetic obj;
+	expression = "(a + (b*c^d-e)^(f+g*h)-i)";
 	//set the expression
-	setExpression(expression);
-	//get the expression now
-	expression = getExpression();
+	obj.setExpression(expression);
 	cout << "\n\t2> Translation of Arithmetic Expression";
 	cout << "\n\t" << string(82, char(205)) << "\n";
 
 	//if true
-	if (checkParenethesis(expression)) {
+	if (checkParenethesis(obj.getExpression())) {
 		cout << "\n\t\tInfix expression: " << expression;
 		cout << "\n\t\tPostfix expression: ERROR: inbalanced parentheses.";
 	}
