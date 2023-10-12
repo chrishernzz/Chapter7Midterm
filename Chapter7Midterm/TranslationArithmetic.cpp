@@ -54,7 +54,7 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 //postcondition: going to create a menu that accepts 
 void TranslationArithmetic::menuInformation(){
 	system("cls");
-	//instance of object to show that we are using setters and getters
+	//declaring an object of the class (TranslationArithmetic) to show that we are using setters and getters
 	TranslationArithmetic obj;
 	string express = "a + (b*c^d-e)(10a + a^2)^(f+g*h)-i";
 	//set the expression
