@@ -1,6 +1,7 @@
 #include "TranslationArithmetic.h"
 
-
+//precondition:
+//postcondition: 
 TranslationArithmetic::TranslationArithmetic() :expression("") {}
 
 //precondition: going to get the expression 
@@ -46,6 +47,7 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 	}
 	//if there is an '(' in the stack then the stack is not empty because there is a left parenthesis that does not match
 	if (!validExpression.empty()){
+		//flag it to true
 		failed = true;
 	}
 
@@ -56,9 +58,10 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 //postcondition: going to create a menu that accepts 
 void TranslationArithmetic::menuInformation(){
 	system("cls");
-	char option;
-	string expression = "(a + b*(c^d-e)^f+g*h)-i)";
+	expression = ")a + b*(c^d-e)^(f+g*h)-i)";
+	//set the expression
 	setExpression(expression);
+	//get the expression now
 	expression = getExpression();
 	cout << "\n\t2> Translation of Arithmetic Expression";
 	cout << "\n\t" << string(82, char(205)) << "\n";
