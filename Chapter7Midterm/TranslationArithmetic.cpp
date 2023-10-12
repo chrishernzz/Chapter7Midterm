@@ -56,21 +56,21 @@ void TranslationArithmetic::menuInformation(){
 	system("cls");
 	//instance of object to show that we are using setters and getters
 	TranslationArithmetic obj;
-	expression = "(a + (b*c^d-e)^(f+g*h)-i)";
+	string express = "a + (b*c^d-e)(10a + a^2)^(f+g*h)-i";
 	//set the expression
-	obj.setExpression(expression);
+	obj.setExpression(express);
 	cout << "\n\t2> Translation of Arithmetic Expression";
 	cout << "\n\t" << string(82, char(205)) << "\n";
 
 	//if true
 	if (checkParenethesis(obj.getExpression())) {
-		cout << "\n\t\tInfix expression: " << expression;
+		cout << "\n\t\tInfix expression: " << express;
 		cout << "\n\t\tPostfix expression: ERROR: inbalanced parentheses.";
 	}
 	else {
-		cout << "\n\t\tInfix expression: " << expression;
+		cout << "\n\t\tInfix expression: " << express;
 		cout << "\n\t\tPostfix expression: VALID: balanced parenthesis!";
 	}
 
-	cout << "\n\n";
+	cout << "\n";
 }
