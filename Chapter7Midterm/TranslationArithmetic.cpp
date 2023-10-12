@@ -29,7 +29,8 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 		//flag it to true
 		failed = true;
 	}
-	for (int i = 0; !failed && (i < length); i++) {
+	//loop through the string expression
+	for (int i = 0; i < length;  i++) {
 		//if the expression[index] is equal to the left parenthesis, push it to the stack EX: expression[3] has '(' then its eqaul to left parenthesis
 		if (expression[i] == LEFT_PARENTHESIS) {
 			//will push everytime there is a left parenthesis
@@ -58,7 +59,7 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 //postcondition: going to create a menu that accepts 
 void TranslationArithmetic::menuInformation(){
 	system("cls");
-	expression = ")a + b*(c^d-e)^(f+g*h)-i)";
+	expression = "a + (b*c^d-e)^(f+g*h)-i";
 	//set the expression
 	setExpression(expression);
 	//get the expression now
