@@ -30,7 +30,7 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 		}
 		//else if the expression[index] is right parenthesis and the stack is not empty, pop it
 		else if (expression[i] == ')' && !validExpression.empty()) {
-			//if statement that checks if the top is left parenthesis '('
+			//if statement that checks if the top() of the stack is left parenthesis '('
 			if (validExpression.top() == '(') {
 				//will pop the left parenthesis off the stack since there is a right parenthesis
 				validExpression.pop();
