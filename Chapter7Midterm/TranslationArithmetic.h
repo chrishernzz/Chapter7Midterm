@@ -19,7 +19,7 @@ public:
 	//setters(mutators)
 	void setExpression(string newExpression);
 	//member function that check left and right parenthesis
-	bool checkParenethesis(string& expression);
+	bool checkParenethesis(string expression);
 	
 	//member function to get the menu option
 	void menuInformation();

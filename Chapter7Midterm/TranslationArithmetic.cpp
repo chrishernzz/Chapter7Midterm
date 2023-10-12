@@ -16,7 +16,7 @@ void TranslationArithmetic::setExpression(string newExpression){
 
 //precondition: going to pass in a string expression as our parameter
 //postcondition: going to return value indicates that the parenthesis in the given expression are balanced, if not then return value is false
-bool TranslationArithmetic::checkParenethesis(string& expression){
+bool TranslationArithmetic::checkParenethesis(string expression){
 	const char LEFT_PARENTHESIS = '(';
 	const char RIGHT_PARENTHESIS = ')';
 	//getting size of the expression;
@@ -57,7 +57,7 @@ bool TranslationArithmetic::checkParenethesis(string& expression){
 void TranslationArithmetic::menuInformation(){
 	system("cls");
 	char option;
-	string expression = "(a + b*(c^d-e)^(f+g*h)-i)";
+	string expression = "(a + b*(c^d-e)^f+g*h)-i)";
 	setExpression(expression);
 	expression = getExpression();
 	cout << "\n\t2> Translation of Arithmetic Expression";
