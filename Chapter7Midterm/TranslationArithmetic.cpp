@@ -17,19 +17,12 @@ void TranslationArithmetic::setExpression(string newExpression) {
 
 //precondition: going to pass in a string expression as our parameter
 //postcondition: going to return value indicates that the parenthesis in the given expression are balanced, if not then return value is false
-bool TranslationArithmetic::checkParenethesis(string expression){
-	const char LEFT_PARENTHESIS = '(';
-	const char RIGHT_PARENTHESIS = ')';
+bool TranslationArithmetic::checkParenethesis(string expression) {
 	//getting size of the expression;
 	int length = expression.size();
 	bool failed = false;
-	
-	//checking if there is left parenthesis beginning of the expression, flag it to true right away
-	if (expression[0] != LEFT_PARENTHESIS) {
-		//flag it to true
-		failed = true;
-	}
-	for (int i = 0; !failed && (i < length); i++) {
+	//loop through the string expression
+	for (int i = 0; i < length; i++) {
 		//if the expression[index] is equal to the left parenthesis, push it to the stack EX: expression[3] has '(' then its eqaul to left parenthesis
 		if (expression[i] == '(') {
 			//will push everytime there is a left parenthesis
@@ -48,8 +41,9 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 			failed = true;
 		}
 	}
-	//if there is an '(' in the stack then the stack is not empty because there is a left parenthesis that does not match
-	if (!validExpression.empty()){
+	//if there is an '(' (left parenthesis) left over in the stack (stack is not empty) because there is a left parenthesis that does not match
+	if (!validExpression.empty()) {
+		//flag it to true
 		failed = true;
 	}
 	return failed;
@@ -59,10 +53,9 @@ bool TranslationArithmetic::checkParenethesis(string expression){
 //postcondition: going to create a menu that accepts 
 void TranslationArithmetic::menuInformation() {
 	system("cls");
-	char option;
-	string expression = "(a + b*(c^d-e)^f+g*h)-i)";
-	setExpression(expression);
-	expression = getExpression();
+	string express = "a + (b*c^d-e)^(f+g*h)-i";
+	//set the expression with the new string
+	setExpression(express);
 	cout << "\n\t2> Translation of Arithmetic Expression";
 	cout << "\n\t" << string(82, char(205)) << "\n";
 
@@ -72,8 +65,8 @@ void TranslationArithmetic::menuInformation() {
 		cout << "\n\t\tPostfix expression: ERROR: inbalanced parentheses.";
 	}
 	else {
-		cout << "\n\t\tInfix expression: " << expression;
-		cout << "\n\t\tPostfix expression: VALID: balanced parenthesis!";
+		cout << "\n\t\tInfix expression: " << express;
+		cout << "\n\t\tPostfix expression: VALID: balanced parentheses!";
 	}
 
 	cout << "\n\n";

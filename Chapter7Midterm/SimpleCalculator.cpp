@@ -1,6 +1,6 @@
 #include "SimpleCalculator.h"
 
-SimpleCalculator::SimpleCalculator(): expression("") {}
+SimpleCalculator::SimpleCalculator() : expression("") {}
 
 //precondition: going to get the expression 
 //postcondition: going to return the private expression
@@ -9,12 +9,12 @@ string SimpleCalculator::getExpression() const {
 }
 //precondition: going to get the new expression
 //postcondition: going to set the private expression with the new expression member
-void SimpleCalculator::setExpression(string newString){
+void SimpleCalculator::setExpression(string newString) {
 	expression = newString;
 }
 //precondition:
 //postcondition: 
-bool SimpleCalculator::checkParenthesis(string expression){
+bool SimpleCalculator::checkParenthesis(string expression) {
 	//getting size of the expression;
 	int length = expression.size();
 	bool failed = false;
@@ -48,28 +48,28 @@ bool SimpleCalculator::checkParenthesis(string expression){
 
 //precondition:
 //postcondition: 
-void SimpleCalculator::evaluateExpression(){
-	double num1, num2,total;
+void SimpleCalculator::evaluateExpression() {
+	double num1, num2, total;
 
 	num2 = digits.top();
 	digits.pop();
 	num1 = digits.top();
 	digits.pop();
-	
-	switch (operators.top()){
-	case '+':{
+
+	switch (operators.top()) {
+	case '+': {
 		total = num1 + num2;
 	}
 			break;
-	case '-':{
+	case '-': {
 		total = num1 - num2;
 	}
 			break;
-	case '*':{
+	case '*': {
 		total = num1 * num2;
 	}
 			break;
-	case '/':{
+	case '/': {
 		//check if number 2 is not zero, if not zero then divide it
 		if (num2 != 0) {
 			total = num1 / num2;
@@ -90,10 +90,10 @@ void SimpleCalculator::evaluateExpression(){
 	operators.pop();
 }
 
-double SimpleCalculator::checkDigitsExpression(string expression){
+double SimpleCalculator::checkDigitsExpression(string expression) {
 	//getting the size of the string (expression)
 	int length = expression.size();
-	for (int i = 0; i < length;i++) {
+	for (int i = 0; i < length; i++) {
 		//check if the expression is a digit if digit, then run this
 		if (isdigit(expression[i]) || expression[i] == '.') {
 			//going to turn the string to a double

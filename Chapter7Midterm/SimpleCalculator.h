@@ -7,7 +7,7 @@ using namespace std;
 //input (1) header files inputs validation
 string inputString(string prompt, bool spaces);
 
-class SimpleCalculator{
+class SimpleCalculator {
 private:
 	//STL stack that will push the expression (parenthesis)
 	stack<char>valid;
@@ -21,7 +21,7 @@ public:
 	SimpleCalculator();
 
 	//getters(accesors)
-    string getExpression() const;
+	string getExpression() const;
 	//setters(mutators)
 	void setExpression(string newString);
 
