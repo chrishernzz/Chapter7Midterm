@@ -55,7 +55,7 @@ void SimpleCalculator::evaluateExpression(){
 	digits.pop();
 	num1 = digits.top();
 	digits.pop();
-
+	
 	switch (operators.top()){
 	case '+':{
 		total = num1 + num2;
