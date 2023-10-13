@@ -43,7 +43,7 @@ bool TranslationArithmetic::checkParenethesis(string expression) {
 	}
 	//if there is an '(' (left parenthesis) left over in the stack (stack is not empty) because there is a left parenthesis that does not match
 	if (!validExpression.empty()) {
-		//flag it to true
+		//flag this to true, meaning its an error
 		failed = true;
 	}
 	return failed;
