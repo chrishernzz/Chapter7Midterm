@@ -129,11 +129,11 @@ double SimpleCalculator::checkDigitsExpression(string expression){
 		return 0.0;
 	}
 }
-//precondition:
+//precondition: Na
 //postcondition:
 void SimpleCalculator::menuInformation() {
 	system("cls");
-	//SimpleCalculator calc;
+	//SimpleCalculator calc; this is not needed 
 	string express;
 	cout << "\n\t1> Simple Calculator\n";
 	cout << string(100, char(196)) << endl;
