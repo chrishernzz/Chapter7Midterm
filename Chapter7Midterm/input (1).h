@@ -1,7 +1,6 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-
 using namespace std;
 
 //return an input char
@@ -256,7 +255,6 @@ double inputDouble(string prompt, double start, bool posNeg)
 	} while (true);
 	return input;
 }
-
 //return an input double within range ,start and end
 double inputDouble(string prompt, double startRange, double endRange)
 {
@@ -276,4 +274,47 @@ double inputDouble(string prompt, double startRange, double endRange)
 			break;
 	} while (true);
 	return input;
+}
+//PreCondition: spaces (boolean true or false)
+//PostCondition: returns a string including space character(s) or without space character 
+string inputString(string prompt, bool spaces)
+{
+	string input = "";
+	bool displayPrompt = true;
+	do
+	{
+		if (displayPrompt)
+		{
+			cout << prompt;
+			displayPrompt = false; // Set the flag to false after displaying the prompt once
+		}
+
+		if (spaces)
+		{
+			getline(cin, input);
+		}
+		else
+		{
+			cin >> input;
+			cin.clear();
+			cin.ignore(999, '\n');
+		}
+
+	} while (input.empty());
+
+	return input;
+}
+
+//PreCondition: a string input
+//PostCondition: Function to remove leading and trailing spaces from a string
+string removeLeadingTrailingSpaces(const string& input)
+{
+	size_t startPos = input.find_first_not_of(" \t\n\r");
+	if (startPos == string::npos)
+	{
+		// The string consists only of spaces
+		return "";
+	}
+	size_t endPos = input.find_last_not_of(" \t\n\r");
+	return input.substr(startPos, endPos - startPos + 1);
 }

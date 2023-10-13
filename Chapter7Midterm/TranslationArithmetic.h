@@ -5,11 +5,11 @@
 #include<string>
 using namespace std;
 
-class TranslationArithmetic{
+class TranslationArithmetic {
 private:
-	string expression;
-	//STL stack
+	//STL stack that will push the expression (parenthesis)
 	stack<char> validExpression;
+	string expression;
 public:
 	//defualt constructor
 	TranslationArithmetic();
@@ -20,9 +20,8 @@ public:
 	void setExpression(string newExpression);
 	//member function that check left and right parenthesis
 	bool checkParenethesis(string expression);
-	
+
 	//member function to get the menu option
 	void menuInformation();
 
 };
-

@@ -4,6 +4,7 @@
 
 #include<iostream>
 #include"input (1).h"
+#include"SimpleCalculator.h"
 #include"TranslationArithmetic.h"
 using namespace std;
 
@@ -49,8 +50,8 @@ int menuOption() {
 //precondition: going to call my Vector class
 //postcondition: going to then call my mainMenu function that will have all the information and the menus as well
 void challenge1() {
-	//Vector menu;
-	//menu.mainMenu();
+	SimpleCalculator menu;
+	menu.menuInformation();
 }
 //precondition: going to call my TranslationArithmetic Class
 //postcondition: going to then mainMenu function so that will give me the information for the expression
