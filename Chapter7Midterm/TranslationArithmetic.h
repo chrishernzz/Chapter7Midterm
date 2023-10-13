@@ -7,7 +7,7 @@ using namespace std;
 
 class TranslationArithmetic {
 private:
-	//STL stack that will push the expression (parenthesis)
+	//STL stack that will push the expression (parenthesis) and will keep track of it
 	stack<char> validExpression;
 	string expression;
 public:
