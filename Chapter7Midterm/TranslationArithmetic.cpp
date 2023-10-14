@@ -69,5 +69,5 @@ void TranslationArithmetic::menuInformation() {
 		cout << "\n\t\tPostfix expression: VALID: balanced parentheses!";
 	}
 
-	cout << "\n\n";
+	cout << "\n";
 }

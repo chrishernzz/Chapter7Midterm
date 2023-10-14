@@ -17,6 +17,17 @@ private:
 	stack<char>operators;
 	string expression;
 public:
+	//Class that checks if its divison by 0 0
+	class DivisionByZero{ 
+	private:
+		string checking;
+	public:
+		//defualt constructor
+		DivisionByZero();
+		//constructor one argument(parameter)
+		DivisionByZero(SimpleCalculator r);
+		string toString();
+	};
 	//defualt constructor
 	SimpleCalculator();
 
@@ -24,6 +35,7 @@ public:
 	string getExpression() const;
 	//setters(mutators)
 	void setExpression(string newString);
+	string toString();
 
 	bool checkParenthesis(string expression);
 	//double displayCalculation(stack<double>& numbers, stack<char>& operators, istream& ins);

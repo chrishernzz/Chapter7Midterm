@@ -1,5 +1,19 @@
 #include "SimpleCalculator.h"
 
+//precondition: going to call the ZeroDenominator class
+//postcondition: going to put it as a default constructor
+SimpleCalculator::DivisionByZero::DivisionByZero() {}
+//precondition: going to pass in the SimleCalculator class to give you access to the toString() function
+//postcondition: going to then now set the rational which is the ZeroDenominator private = to the toString()
+SimpleCalculator::DivisionByZero::DivisionByZero(SimpleCalculator r){
+	checking = r.toString();
+}
+//precondition: going to call the toString() function
+//postcondition: going to return the rational (string)
+string SimpleCalculator::DivisionByZero::toString(){
+	return checking;
+}
+
 SimpleCalculator::SimpleCalculator() : expression("") {}
 
 //precondition: going to get the expression 
@@ -11,6 +25,12 @@ string SimpleCalculator::getExpression() const {
 //postcondition: going to set the private expression with the new expression member
 void SimpleCalculator::setExpression(string newString) {
 	expression = newString;
+}
+//precondition: going to turn the variables to a string since they are int
+//postcondition: going to return a double checking if its 0
+string SimpleCalculator::toString(){
+	double num2 = 0.0;
+	return to_string(num2);
 }
 //precondition:
 //postcondition: 
@@ -57,12 +77,10 @@ void SimpleCalculator::evaluateExpression() {
 	digits.pop();
 
 	switch (operators.top()) {
-	case '+': {
-		total = num1 + num2;
-	}
-			break;
-	case '-': {
-		total = num1 - num2;
+	case '^': {
+		//exponent = num2;
+		//taking the power of it 
+		total = pow(num1, num2);
 	}
 			break;
 	case '*': {
@@ -76,9 +94,17 @@ void SimpleCalculator::evaluateExpression() {
 		}
 		//else if its 0, then error
 		else {
-			cout << "\n\t\tERROR: Division by zero cannot be done.";
-			total = 0.0;
+			//throw the error
+			throw DivisionByZero(*this);
 		}
+	}
+			break;
+	case '+': {
+		total = num1 + num2;
+	}
+			break;
+	case '-': {
+		total = num1 - num2;
 	}
 			break;
 	}
@@ -94,22 +120,22 @@ double SimpleCalculator::checkDigitsExpression(string expression) {
 	//getting the size of the string (expression)
 	int length = expression.size();
 	for (int i = 0; i < length; i++) {
-		//check if the expression is a digit if digit, then run this
+		//check if the expression[index] is a digit if digit, then run this
 		if (isdigit(expression[i]) || expression[i] == '.') {
 			//going to turn the string to a double
 			double number = stod(expression.substr(i));
 			//push the digit (number) to the digit stack
 			digits.push(number);
 		}
-		//else if the expression has any of these operators ^ , + , -, *, or / , run this
-		else if (expression[i] == '^' || expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/') {
+		//else if the expression[index] has any of these operators ^ , + , -, *, or / , run this
+		else if (expression[i] == '^' || expression[i] == '*' || expression[i] == '/' || expression[i] == '+' || expression[i] == '-') {
 			//push the operators to the operator stack
 			operators.push(expression[i]);
 		}
 		//ignore the open parenthesis
 		else if (expression[i] == '(') {
 		}
-		//else if the expression has the right parenthesis then evluate the digits
+		//else if the expression[index] has the right parenthesis then evluate the digits
 		else if (expression[i] == ')') {
 			//call the function to evulate the expression
 			evaluateExpression();
@@ -137,18 +163,24 @@ void SimpleCalculator::menuInformation() {
 	string express;
 	cout << "\n\t1> Simple Calculator\n";
 	cout << string(100, char(196)) << endl;
+	try {
+		express = inputString("\n\tType a fully parenthesized arithmetic expression: ", true);
+		setExpression(express);
 
-	express = inputString("\n\tType a fully parenthesized arithmetic expression: ", true);
-	setExpression(express);
-
-	//CHECK FIRST IF PARENTHESIS ARE RIGHT
-	if (checkParenthesis(getExpression())) {
-		cout << "\n\t\tERROR: Parentheses don't match.";
-	}
-	else {
-		//GET THE TOTAL
-		double total = checkDigitsExpression(getExpression());
-		cout << "\n\t\tIt evaluates to " << total << ".";
+		//CHECK FIRST IF PARENTHESIS ARE RIGHT
+		if (checkParenthesis(getExpression())) {
+			cout << "\n\t\tERROR: Parentheses don't match.";
+		}
+		else {
+			//GET THE TOTAL
+			double total = checkDigitsExpression(getExpression());
+			cout << "\n\t\tIt evaluates to " << total << ".";
+		}
+	//catch the error here and call the what() function to print the error
+	}catch (DivisionByZero) {
+		//cout << obj.what();
+		cout << "\n\t\t\tERROR: Division by zero cannot be done.";
 	}
 	cout << "\n";
 }
+
