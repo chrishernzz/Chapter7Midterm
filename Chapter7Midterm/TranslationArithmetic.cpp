@@ -52,7 +52,7 @@ bool TranslationArithmetic::checkParenethesis(string expression) {
 //precondition: going to pass in a string that is my expression
 //postcondition: going to then return the postfix of the infix using stack and push and pop
 string TranslationArithmetic::infixToPostfix(string infix){
-	string postfix = " ";
+	string postfix = "";
 	//size of the infix expression (input)
 	int length = infix.size();
 
@@ -73,7 +73,7 @@ string TranslationArithmetic::infixToPostfix(string infix){
 				//pop it right away so its not in the stack
 				trackOperator.pop();
 			}
-			//if its not empty and left parenthesis is not on top then pop it
+			//if its not empty and left parenthesis is on top then pop it since there is a right parenthesis (they match)
 			if (!trackOperator.empty() && trackOperator.top() == '(') {
 				trackOperator.pop();
 			}
@@ -90,8 +90,8 @@ string TranslationArithmetic::infixToPostfix(string infix){
 		}
 		//else if there is a blank space, add the top()
 		else if (infix[i] == ' ') {
-			//check that the stack is not empty at first
-			if (!trackOperator.empty()) {
+			//check that the stack is not empty at first and it does not equal to left parenthesis (don't add it)
+			if (!trackOperator.empty() && trackOperator.top() != '(') {
 				//add the top() to the postfix 
 				postfix += trackOperator.top();
 				//pop it right away so it is not there
@@ -128,7 +128,7 @@ void TranslationArithmetic::menuInformation() {
 	else {
 		string postfixExpression = infixToPostfix(express);
 		cout << "\n\t\tInfix expression: " << express;
-		cout << "\n\t\tPostfix expression:"<<postfixExpression;
+		cout << "\n\t\tPostfix expression: "<<postfixExpression;
 	}
 	cout << "\n";
 }
