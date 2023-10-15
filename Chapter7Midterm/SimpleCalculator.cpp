@@ -119,11 +119,20 @@ void SimpleCalculator::evaluateExpression() {
 double SimpleCalculator::checkDigitsExpression(string expression) {
 	//getting the size of the string (expression)
 	int length = expression.size();
-	for (int i = 0; i < length; i++) {
+	int i = 0;
+	while(i < length) {
 		//check if the expression[index] is a digit if digit, then run this
 		if (isdigit(expression[i]) || expression[i] == '.') {
+			int start = i;
+			//loop its less than the expression length and its digit or decimal, loop
+			while (i < length && (isdigit(expression[i]) || expression[i] == '.')) {
+				i++;
+			}
+			//going to get the substr of the expression, meaning first argu is where we are starting and the second argu is the
+			//length we want to get EX: chris; start = 0, 0-2 we are now getting the first two letters 'ch' 
+			string numStr = expression.substr(start, i - start);
 			//going to turn the string to a double
-			double number = stod(expression.substr(i));
+			double number = stod(numStr);
 			//push the digit (number) to the digit stack
 			digits.push(number);
 		}
@@ -131,14 +140,20 @@ double SimpleCalculator::checkDigitsExpression(string expression) {
 		else if (expression[i] == '^' || expression[i] == '*' || expression[i] == '/' || expression[i] == '+' || expression[i] == '-') {
 			//push the operators to the operator stack
 			operators.push(expression[i]);
+			i++;
 		}
 		//ignore the open parenthesis
 		else if (expression[i] == '(') {
+			i++;
 		}
 		//else if the expression[index] has the right parenthesis then evluate the digits
 		else if (expression[i] == ')') {
 			//call the function to evulate the expression
 			evaluateExpression();
+			i++;
+		}
+		else {
+			i++;
 		}
 	}
 	//while the operators stack is not empty, loop through it and go through the evaluateExpression() function
