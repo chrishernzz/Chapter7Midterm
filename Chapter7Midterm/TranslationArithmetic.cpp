@@ -58,7 +58,7 @@ string TranslationArithmetic::infixToPostfix(string infix){
 
 	for (int i = 0; i < length; i++) {
 		//if the infix expression is an alphanumeric (letter) or if its a digit (number)
-		if (isalnum(infix[i]) || isdigit(infix[i])) {
+		if (isalnum(infix[i]) || isdigit(infix[i]) || infix[i] == '.') {
 			//add it to the postfix
 			postfix += infix[i];
 		}
