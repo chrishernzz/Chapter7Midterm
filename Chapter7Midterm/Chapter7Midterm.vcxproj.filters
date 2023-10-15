@@ -24,6 +24,12 @@
     <ClInclude Include="SimpleCalculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="n_Queens.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardSpaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -33,6 +39,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SimpleCalculator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="n_Queens.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardSpaces.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -6,6 +6,7 @@
 #include"input (1).h"
 #include"SimpleCalculator.h"
 #include"TranslationArithmetic.h"
+#include"n_Queens.h"
 using namespace std;
 
 //prototype
@@ -59,9 +60,9 @@ void challenge2() {
 	TranslationArithmetic menu;
 	menu.menuInformation();
 }
-//precondition: going to call my ApplicationVectorOrList class
-//postcondition: going to then call my mainMenu function that will have all the information and the menus as well
+//precondition: going to call my N Queens class
+//postcondition: going to then mainMenu function so that will give me the information of the winner n queen 
 void challenge3() {
-	//ApplicationVectorOrList menu;
-	//menu.mainMenu();
+	n_Queens menu;
+	menu.n_QueensMenu();
 }

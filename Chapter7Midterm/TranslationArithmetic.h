@@ -7,6 +7,8 @@ using namespace std;
 //input (1) header files inputs validation
 string inputString(string prompt, bool spaces);
 
+//precondition: going to create a class that translate the arithmetic infix to postfix
+//postcondition: going to have two stacks and one string in my private, in public we have default constructor and member functions
 class TranslationArithmetic {
 private:
 	//STL stack that will push the expression (parenthesis) and will keep track of it

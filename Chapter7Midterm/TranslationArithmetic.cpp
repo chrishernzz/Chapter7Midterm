@@ -1,6 +1,6 @@
 #include "TranslationArithmetic.h"
 
-//precondition: going to call the defualt constructor class
+//precondition: going to call the default constructor class
 //postcondition: going to then intialize the expression 
 TranslationArithmetic::TranslationArithmetic() :expression("") {}
 
