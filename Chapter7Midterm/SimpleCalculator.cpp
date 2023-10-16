@@ -145,16 +145,21 @@ void SimpleCalculator::displayCalculation(stack<double>& numbers, istream& ins, 
 	if (errorCtr >= 1){
 	}
 	else{
-		evaluateExpression(numbers);
-		answer = numbers.top();
-		cout << "\nThe Expression Evaluates to: " << answer << endl;
+		evaluateExpression(numbers, errorCtr);
+		if (errorCtr >= 1) {
+			return;
+		}
+		else {
+			answer = numbers.top();
+			cout << "\nThe Expression Evaluates to: " << answer << endl;
+		}
 	}
 	//closing file
 	outFile.close();
 }
 //Precondition:A stack of doubles for numbers
 //Postcondition: evaluates expression
-void SimpleCalculator::evaluateExpression(stack<double>& numbers){
+void SimpleCalculator::evaluateExpression(stack<double>& numbers, int& errorCtr){
 	double num1;
 	double num2;
 	double answer;
@@ -237,8 +242,9 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers){
 		}
 		//else if if there are less than two numbers on the stack while the file is not at the end.
 		else if (numbers.size() < 2 && !inFile.eof()){
-			cout << "ERROR: Negative numbers only work outside parentheses.\n\n";
-			return;
+			cout << "\nERROR: Cannot be a negative number.\n";
+			++errorCtr;
+			break;
 		}
 	}
 	//closing the file

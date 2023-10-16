@@ -28,7 +28,7 @@ public:
 	string toString();
 	void calculatorMenu();
 	void displayCalculation(stack<double>& numbers, istream& ins, double& answer);
-	void evaluateExpression(stack<double>& numbers);
+	void evaluateExpression(stack<double>& numbers, int& errorCtr);
 	int getPrecendence(char operation);
 };
 
