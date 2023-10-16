@@ -215,7 +215,7 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers){
 			numbers.push(pow(num1, num2));
 		}
 		else if (numbers.size() < 2 && !inFile.eof()){
-			cout << "ERROR: Incorrect input must be postive numbers\n\n";
+			cout << "ERROR: Negative numbers only work outside parentheses.\n\n";
 			return;
 		}
 	}

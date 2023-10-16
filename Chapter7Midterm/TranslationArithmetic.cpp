@@ -123,9 +123,8 @@ void TranslationArithmetic::menuInformation() {
 		cout << "\n\t\tPostfix expression: ERROR: inbalanced parentheses.";
 	}
 	else {
-		string postfixExpression = infixToPostfix(express);
 		cout << "\n\t\tInfix expression: " << express;
-		cout << "\n\t\tPostfix expression: "<<postfixExpression;
+		cout << "\n\t\tPostfix expression: " << infixToPostfix(express);
 	}
 	cout << "\n";
 }
