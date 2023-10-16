@@ -4,37 +4,32 @@
 //postcondition:
 bool checkIfConflict(int boardSize, stack<BoardSpaces> filledSpaces, BoardSpaces currentSpace);
 
-//precondition:
-//postcondition:
-n_Queens::n_Queens(){
-	shiftDirection = 'R';
-	firstColumnPermutaions = 0;
-	boardSize = 0;
-	filled = 0;
-	gameWon = false;
-}
-//precondition:
-//postcondition:
+//precondition: going to call the default constructor class
+//postcondition: going to then intialize the privates variables
+n_Queens::n_Queens():shiftDirection('R'),firstColumnPermutaions(0),boardSize(0),filled(0),gameWon(false){}
+
+//precondition: going to get the new boardSize
+//postcondition: going to set the private boardSize with the new boardSize member
 void n_Queens::setBoardSize(int newBoardSize){
 	boardSize = newBoardSize;
 }
-//precondition:
-//postcondition:
+//precondition: going to get the new filled
+//postcondition: going to set the private filled with the new filled member
 void n_Queens::setFilled(int newFilledAmount){
 	filled = newFilledAmount;
 }
-//precondition:
-//postcondition:
+//precondition: going to get the boardSize 
+//postcondition: going to return the private boardSize
 int n_Queens::getBoardSize() const{
 	return boardSize;
 }
-//precondition:
-//postcondition:
+//precondition: going to get the filled 
+//postcondition: going to return the private filled
 int n_Queens::getFilled() const{
 	return filled;
 }
-//precondition:
-//postcondition:
+//precondition: going to be passing in the boardSize, filledSpaces (the stack)
+//postcondition: going to do if statements checking if the board is filled, if not return the position of that row and column
 void n_Queens::fillBoard(){
 	BoardSpaces currentSpace;
 	bool queenConflict = false;
@@ -99,8 +94,8 @@ void n_Queens::fillBoard(){
 		}
 	} while (gameWon == false);
 }
-//precondition:
-//postcondition:
+//precondition: going to pass in a stack as a parameter
+//postcondition: going to then return the board when it is filled up
 void n_Queens::displayBoard(stack<BoardSpaces> filledSpaces) const{
 	cout << endl << "\t" << boardSize << "-Queens Soulution." << endl;
 	cout << "\n\t" << std::string(1, char(201));
@@ -126,8 +121,8 @@ void n_Queens::displayBoard(stack<BoardSpaces> filledSpaces) const{
 	cout << string(boardSize * 2 + 1, char(205));
 	cout << string(1, char(188)) << endl;
 }
-//precondition:
-//postcondition:
+//precondition: going to pass in two stacks as the parameters
+//postcondition: going to then return a boolean checking if they are conflict, if not then keep looping through the loop
 bool checkIfConflict(int boardSize, stack<BoardSpaces> filledSpaces, BoardSpaces currentSpace){
 	int stackSize = filledSpaces.size();
 
@@ -148,8 +143,8 @@ bool checkIfConflict(int boardSize, stack<BoardSpaces> filledSpaces, BoardSpaces
 
 	return false;
 }
-//precondition:
-//postcondition:
+//precondition: going to print the information
+//postcondition: going to create a menu that shows if the N-Queens board is filled
 void n_Queens::n_QueensMenu(){
 	system("cls");
 	cout << "\n\t3> n_Queens Problem";

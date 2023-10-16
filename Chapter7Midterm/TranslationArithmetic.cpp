@@ -28,7 +28,7 @@ bool TranslationArithmetic::checkParenethesis(string expression) {
 			//will push everytime there is a left parenthesis
 			validExpression.push(expression[i]);
 		}
-		//else if the expression[index] is right parenthesis and the stack is not empty, pop it  
+		//else if the expression[index] finds a right parenthesis and the stack is not empty (meaning there is a '(') , pop it  
 		else if (expression[i] == ')' && !validExpression.empty()) {
 			//if statement that checks if the top() of the stack is left parenthesis '('
 			if (validExpression.top() == '(') {
@@ -48,7 +48,6 @@ bool TranslationArithmetic::checkParenethesis(string expression) {
 	}
 	return failed;
 }
-
 //precondition: going to pass in a string that is my expression
 //postcondition: going to then return the postfix of the infix using stack and push and pop
 string TranslationArithmetic::infixToPostfix(string infix){
@@ -57,7 +56,7 @@ string TranslationArithmetic::infixToPostfix(string infix){
 	int length = infix.size();
 
 	for (int i = 0; i < length; i++) {
-		//if the infix expression is an alphanumeric (letter) or if its a digit (number)
+		//if the infix expression is an alphanumeric (letter) or if its a digit (number) or a decimal
 		if (isalnum(infix[i]) || isdigit(infix[i]) || infix[i] == '.') {
 			//add it to the postfix
 			postfix += infix[i];
@@ -108,9 +107,8 @@ string TranslationArithmetic::infixToPostfix(string infix){
 	}
 	return postfix;
 }
-
 //precondition: going to print the information
-//postcondition: going to create a menu that accepts 
+//postcondition: going to create a menu that accepts an infix expressions and checks if the parentheses are balanced
 void TranslationArithmetic::menuInformation() {
 	system("cls");
 	//string express = "(a + (b*c^d-e)^(f+g*h)-i)";

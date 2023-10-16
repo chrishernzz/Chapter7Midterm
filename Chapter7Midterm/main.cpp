@@ -1,6 +1,9 @@
 //Christian Hernandez
 //Date: 10/16/2023
-//subscription: CMPR131
+//subscription: CMPR131 (Midterm)
+
+//Credit:
+//Christian Hernandez,Saul Merino,Thanh Tran, John Kim, Joe Bryant,Erik Santana, & Otoniel Torres Bernal
 
 #include<iostream>
 #include"input (1).h"
@@ -12,7 +15,7 @@ using namespace std;
 //prototype
 int menuOption();
 void challenge1();
-void challenge2();
+void challenge2(); 
 void challenge3();
 
 int main()
@@ -52,7 +55,7 @@ int menuOption() {
 //postcondition: going to then call my mainMenu function that will have all the information and the menus as well
 void challenge1() {
 	SimpleCalculator menu;
-	menu.menuInformation();
+	menu.calculatorMenu();
 }
 //precondition: going to call my TranslationArithmetic Class
 //postcondition: going to then mainMenu function so that will give me the information for the expression
