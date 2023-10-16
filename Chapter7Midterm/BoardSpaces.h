@@ -8,7 +8,7 @@ private:
 	int column;
 
 public:
-	//default constructor
+	//default constructor to intialize
 	BoardSpaces();
 	
 	//setters(mutators)

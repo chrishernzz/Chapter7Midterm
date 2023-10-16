@@ -1,6 +1,6 @@
 #include "BoardSpaces.h"
 
-//precondition: going to call the default constructor class
+//precondition: going to call the default constructor class to call the privates
 //postcondition: going to then intialize the row and column  
 BoardSpaces::BoardSpaces() :row(1), column(0) {};
 
