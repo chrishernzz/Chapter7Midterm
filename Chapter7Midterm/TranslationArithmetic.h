@@ -26,9 +26,9 @@ public:
 	void setExpression(string newExpression);
 	//member function that check left and right parenthesis
 	bool checkParenethesis(string expression);
-	//member function to convert the infix to a postfix
-
+	//member function to convert the infix to postfix
 	string infixToPostfix(string infix);
+
 	//member function to get the menu option
 	void menuInformation();
 

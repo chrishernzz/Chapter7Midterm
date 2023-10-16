@@ -111,7 +111,6 @@ string TranslationArithmetic::infixToPostfix(string infix){
 //postcondition: going to create a menu that accepts an infix expressions and checks if the parentheses are balanced
 void TranslationArithmetic::menuInformation() {
 	system("cls");
-	//string express = "(a + (b*c^d-e)^(f+g*h)-i)";
 	cout << "\n\t2> Translation of Arithmetic Expression";
 	cout << "\n\t" << string(82, char(205)) << "\n";
 	string express = inputString("\n\tEnter an Infix Expression: ", true);
