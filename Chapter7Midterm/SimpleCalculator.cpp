@@ -105,7 +105,7 @@ void SimpleCalculator::displayCalculation(stack<double>& numbers, istream& ins, 
 			}
 			//check if there is a matching left parenthesis.
 			if (convert.empty()){
-				cout << "ERROR: Unbalanced Parenthesis\n";
+				cout << "\n\tERROR: Unbalanced Parenthesis\n";
 				++errorCtr;
 			}
 			else{
@@ -115,7 +115,7 @@ void SimpleCalculator::displayCalculation(stack<double>& numbers, istream& ins, 
 		}
 		//handle other cases (invalid characters).
 		else{
-			cout << "ERROR: Incorrect Expression Input\n";
+			cout << "\n\tERROR: Incorrect Expression Input\n";
 			++errorCtr;
 			++specialError;
 			//ignore the rest of the line.
@@ -133,12 +133,12 @@ void SimpleCalculator::displayCalculation(stack<double>& numbers, istream& ins, 
 	}
 	//if for errors related to unbalanced parentheses.
 	if (!convert.empty() && specialError == 0){
-		cout << "ERROR: Unbalanced Parenthesis\n";
+		cout << "\n\tERROR: Unbalanced Parenthesis\n";
 		++errorCtr;
 	}
 	//if for errors related to incorrect expression input.
 	if (storage.size() <= 1 && specialError == 0){
-		cout << "ERROR: Incorrect Expression Input\n";
+		cout << "\n\tERROR: Incorrect Expression Input\n";
 		++errorCtr;
 	}
 	//if no errors occurred, evaluate the expression and display the result.
@@ -151,7 +151,7 @@ void SimpleCalculator::displayCalculation(stack<double>& numbers, istream& ins, 
 		}
 		else {
 			answer = numbers.top();
-			cout << "\nThe Expression Evaluates to: " << answer << endl;
+			cout << "\n\tThe Expression Evaluates to: " << answer << endl;
 		}
 	}
 	//closing file
@@ -242,7 +242,7 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers, int& errorCtr)
 		}
 		//else if if there are less than two numbers on the stack while the file is not at the end.
 		else if (numbers.size() < 2 && !inFile.eof()){
-			cout << "\nERROR: Cannot be a negative number.\n";
+			cout << "\n\tERROR: Cannot be a negative number.\n";
 			++errorCtr;
 			break;
 		}

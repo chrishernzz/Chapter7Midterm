@@ -90,28 +90,21 @@ void n_Queens::displayBoard(stack<BoardSpaces> filledSpaces) const{
 	cout << string(1, char(187)) << endl;
 
 	// Display the board
-	for (int i = 1; i <= boardSize; i++) { // for each row
+	for (int index = 0; index < boardSize; index++){
 		cout << "\t" << string(1, char(186)) << " ";
-		for (int j = 1; j <= boardSize; j++) { // for each column
-			if (!reversedStack.empty() && reversedStack.top().getRow() == i) {
-				if (reversedStack.top().getColumn() == j) {
-					cout << 'Q';
-					auxStack.push(reversedStack.top());
-					reversedStack.pop();
-				}
-				else {
-					cout << '-';
-				}
-				cout << string(1, char(179));
+		for (int j = 0; j < boardSize; j++){
+			if (reversedStack.top().getColumn() == (j + 1)){
+				cout << 'Q';
 			}
-			else {
+			else{
 				cout << '-';
-				if (j < boardSize) {
-					cout << string(1, char(179));
-				}
+			}
+			if (j < boardSize - 1){
+				cout << string(1, char(179));
 			}
 		}
 		cout << " " << string(1, char(186)) << endl;
+		reversedStack.pop();
 	}
 
 	// Bottom border
