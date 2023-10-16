@@ -51,6 +51,7 @@ bool TranslationArithmetic::checkParenethesis(string expression) {
 //precondition: going to pass in a string that is my expression
 //postcondition: going to then return the postfix of the infix using stack and push and pop
 string TranslationArithmetic::infixToPostfix(string infix){
+	//to hold the postfix 
 	string postfix = "";
 	//size of the infix expression (input)
 	int length = infix.size();

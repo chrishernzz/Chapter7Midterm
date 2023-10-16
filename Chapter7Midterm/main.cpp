@@ -1,9 +1,8 @@
-//Christian Hernandez
+//Credit: Christian Hernandez,Saul Merino,Thanh Tran, John Kim, Joe Bryant,Erik Santana, & Otoniel Torres Bernal
 //Date: 10/16/2023
 //subscription: CMPR131 (Midterm)
 
-//Credit:
-//Christian Hernandez,Saul Merino,Thanh Tran, John Kim, Joe Bryant,Erik Santana, & Otoniel Torres Bernal
+
 
 #include<iostream>
 #include"input (1).h"
@@ -39,7 +38,7 @@ int main()
 //postcondition: it will return an int (the choice of the menu)
 int menuOption() {
 	system("cls");
-	cout << "\n\tCMPR131 Chapter 7: Applications using Stacks by Christian Hernandez(10/16/2023)";
+	cout << "\n\tCMPR131 Chapter 7: Applications using Stacks by Group 7(10/16/2023)";
 	cout << "\n\t" << string(100, char(205));
 	cout << "\n\t\t1> Simple Calculator (problem 9, pg 391)";
 	cout << "\n\t\t2> Translation of arithmetic expression (problem 10, pg 391)";
