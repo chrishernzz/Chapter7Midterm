@@ -5,8 +5,11 @@
 #include<fstream>
 using namespace std;
 
+//input (1) header files inputs validation
 string inputString(string prompt, bool spaces);
 
+//precondition: going to create a class that does a simple calculator
+//postcondition: going to have no privates, in public are creating a class called DivisionByZero to try and catch, defualt constructor, member functions 
 class SimpleCalculator{
 public:
 	//Class that checks if its divison by 0 0
