@@ -286,7 +286,8 @@ string inputString(string prompt, bool spaces)
 		if (displayPrompt)
 		{
 			cout << prompt;
-			displayPrompt = false; // Set the flag to false after displaying the prompt once
+			//flag it to true
+			displayPrompt = false; 
 		}
 
 		if (spaces)

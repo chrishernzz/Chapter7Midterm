@@ -22,7 +22,7 @@ private:
 	bool gameWon;
 
 public:
-	//default constructor
+	//default constructor to intialize
 	n_Queens();
 	
 	//setters(mutators)
