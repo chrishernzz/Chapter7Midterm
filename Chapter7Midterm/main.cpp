@@ -2,8 +2,6 @@
 //Date: 10/16/2023
 //subscription: CMPR131 (Midterm)
 
-
-
 #include<iostream>
 #include"input (1).h"
 #include"SimpleCalculator.h"
