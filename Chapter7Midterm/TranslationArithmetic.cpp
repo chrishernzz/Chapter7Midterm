@@ -116,7 +116,6 @@ void TranslationArithmetic::menuInformation() {
 	string express = inputString("\n\tEnter an Infix Expression: ", true);
 	//set the expression with the new string
 	setExpression(express);
-
 	//if true (pass in the getter that has the expression, its a string)
 	if (checkParenethesis(getExpression())) {
 		cout << "\n\t\tInfix expression: " << express;

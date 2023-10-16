@@ -28,10 +28,7 @@ string SimpleCalculator::toString() {
 //Precondition: NA
 //Postcondition: Displays Calculator Menu
 void SimpleCalculator::calculatorMenu(){
-	SimpleCalculator calc;
 	stack<double> numbers;
-	stack<char> operators;
-	int number;
 	double answer;
 	system("cls");
 	cout << "\n\t1> Simple Calculator\n";
@@ -41,12 +38,13 @@ void SimpleCalculator::calculatorMenu(){
 		// Clear input buffer
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		//call the displayCalculation function to process the input expression.
 		displayCalculation(numbers, cin, answer);
 	}
+	//catch the DivisionByZero exception.
 	catch (DivisionByZero) {
 		cout << "\n\tERROR: Division by zero cannot be done.\n";
 	}
-
 }
 //Precondition: A stack of doubles, user input with numbers that are positive, a double answer
 //Postcondition: Displays expression result
@@ -62,77 +60,88 @@ void SimpleCalculator::displayCalculation(stack<double>& numbers, istream& ins, 
 	ofstream outFile;
 	int errorCtr = 0;
 	int specialError = 0;
-	double test;
+	//open an output file stream to write to "Store.txt".
 	outFile.open("Store.txt");
-
+	//loop through the input stream until a newline character is encountered.
 	while (ins && ins.peek() != '\n'){
-
+		//check if the next character is a left parenthesis.
 		if (ins.peek() == LEFT_PARENTHESIS){
 			ins >> parenthesis;
+			//push the left parenthesis onto the 'convert' stack.
 			convert.push(parenthesis);
 		}
+		//else if the next character is a space.
 		else if (ins.peek() == ' '){
 			ins.ignore();
 		}
+		//else if the next character is a digit or a decimal point.
 		else if (isdigit(ins.peek()) || ins.peek() == DECIMAL){
 			ins >> number;
+			//push the number onto the 'storage' stack.
 			storage.push(number);
 			outFile << number << endl;
 
 		}
+		//else if the next character is an arithmetic operation.
 		else if (ins.peek() == '+' || ins.peek() == '-' || ins.peek() == '*' || ins.peek() == '/' || ins.peek() == '^'){
 			ins >> operation;
+			//pop operators from 'convert' stack and write to the output file based on precedence.
 			while (!convert.empty() && convert.top() != LEFT_PARENTHESIS && getPrecendence(convert.top()) >= getPrecendence(operation)){
 				outFile << convert.top() << endl;
 				convert.pop();
 			}
-
+			//push the current operation onto the 'convert' stack.
 			convert.push(operation);
 
 		}
+		//else if the next character is a right parenthesis.
 		else if (ins.peek() == RIGHT_PARENTHESIS && !convert.empty()){
 			ins.ignore();
-
+			//pop operators from 'convert' stack and write to the output file until a left parenthesis is encountered.
 			while (!convert.empty() && convert.top() != LEFT_PARENTHESIS){
 				operation = convert.top();
-
 				outFile << operation << endl;
-
 				convert.pop();
 			}
+			//check if there is a matching left parenthesis.
 			if (convert.empty()){
 				cout << "ERROR: Unbalanced Parenthesis\n";
 				++errorCtr;
 			}
 			else{
+				//pop the left parenthesis.
 				convert.pop();
 			}
 		}
+		//handle other cases (invalid characters).
 		else{
 			cout << "ERROR: Incorrect Expression Input\n";
 			++errorCtr;
 			++specialError;
+			//ignore the rest of the line.
 			while (ins.peek() != '\n'){
 				ins.ignore();
 			}
 			break;
 		}
 	}
+	//pop any remaining operators from 'convert' stack and write to the output file.
 	while (!convert.empty() && convert.top() != LEFT_PARENTHESIS && specialError == 0){
 		operation = convert.top();
-
 		outFile << operation << endl;
-
 		convert.pop();
 	}
+	//if for errors related to unbalanced parentheses.
 	if (!convert.empty() && specialError == 0){
 		cout << "ERROR: Unbalanced Parenthesis\n";
 		++errorCtr;
 	}
+	//if for errors related to incorrect expression input.
 	if (storage.size() <= 1 && specialError == 0){
 		cout << "ERROR: Incorrect Expression Input\n";
 		++errorCtr;
 	}
+	//if no errors occurred, evaluate the expression and display the result.
 	if (errorCtr >= 1){
 	}
 	else{
@@ -140,6 +149,8 @@ void SimpleCalculator::displayCalculation(stack<double>& numbers, istream& ins, 
 		answer = numbers.top();
 		cout << "\nThe Expression Evaluates to: " << answer << endl;
 	}
+	//closing file
+	outFile.close();
 }
 //Precondition:A stack of doubles for numbers
 //Postcondition: evaluates expression
@@ -149,17 +160,22 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers){
 	double answer;
 	double storeNum;
 	char storeOp;
+	// Create an input file stream to read from "Store.txt".
 	ifstream inFile;
-
 	inFile.open("Store.txt");
+
+	//continue reading until the end of the file (EOF) is reached.
 	while (!inFile.eof()){
+		//if the next character in the file is a digit.
 		if (isdigit(inFile.peek())){
 			inFile >> storeNum;
 			numbers.push(storeNum);
 		}
+		//else if the next character in the file is a newline character.
 		else if (inFile.peek() == '\n'){
 			inFile.ignore();
 		}
+		//else if the next character in the file is an addition operator ('+').
 		else if (inFile.peek() == '+' && numbers.size() >= 2){
 			inFile >> storeOp;
 
@@ -170,6 +186,7 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers){
 			numbers.push(num1 + num2);
 
 		}
+		//else if the next character in the file is a subtraction operator ('-'
 		else if (inFile.peek() == '-' && numbers.size() >= 2){
 			inFile >> storeOp;
 
@@ -179,6 +196,7 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers){
 			numbers.pop();
 			numbers.push(num1 - num2);
 		}
+		//else if the next character in the file is a subtraction operator ('*')
 		else if (inFile.peek() == '*' && numbers.size() >= 2){
 			inFile >> storeOp;
 
@@ -188,6 +206,7 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers){
 			numbers.pop();
 			numbers.push(num1 * num2);
 		}
+		//else if the next character in the file is a subtraction operator ('/')
 		else if (inFile.peek() == '/' && numbers.size() >= 2){
 			inFile >> storeOp;
 
@@ -195,6 +214,7 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers){
 			numbers.pop();
 			num1 = numbers.top();
 			numbers.pop();
+			//if number 2 is not 0 run this
 			if (num2 != 0) {
 				numbers.push(num1 / num2);
 			}
@@ -205,6 +225,7 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers){
 			}
 			
 		}
+		//else if the next character in the file is a subtraction operator ('^')
 		else if (inFile.peek() == '^' && numbers.size() >= 2){
 			inFile >> storeOp;
 
@@ -214,11 +235,13 @@ void SimpleCalculator::evaluateExpression(stack<double>& numbers){
 			numbers.pop();
 			numbers.push(pow(num1, num2));
 		}
+		//else if if there are less than two numbers on the stack while the file is not at the end.
 		else if (numbers.size() < 2 && !inFile.eof()){
 			cout << "ERROR: Negative numbers only work outside parentheses.\n\n";
 			return;
 		}
 	}
+	//closing the file
 	inFile.close();
 }
 //Precondition: a char operator
